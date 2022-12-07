@@ -19,15 +19,15 @@ For the dataset paths and hyperparameter setups, please refer to the config file
 ### Train:
 
 ```shell=zsh
-python3 -m torch.distributed.launch --nproc_per_node=<num pf GPUs> main.py --config <path of config file> --name <name of log/ckpt> <--task1 --task2 ...> [--gpus <number of gpus (default is 1)>] [--other options]
-eg: python3 -m torch.distributed.launch --nproc_per_node=2 main.py --config config/libri/conformer_256_AdamW.yaml --name five_task_with_per-layer-pcgrad --asr --se --sc --tts --vcb --gpus 2 --no_amp --pcgrad --per_layer
+python -m torch.distributed.launch --nproc_per_node=<num pf GPUs> main.py --config <path of config file> --name <name of log/ckpt> <--task1 --task2 ...> [--gpus <number of gpus (default is 1)>] [--other options]
+eg: python -m torch.distributed.launch --nproc_per_node=1 main.py --config config/libri/conformer_256_AdamW.yaml --name tts-vc --tts --vcb --gpus 1 --no_amp --pcgrad --per_layer
 ```
 
 ### Test:
 
 ```shell=zsh
-python3 -m torch.distributed.launch --nproc_per_node=<num pf GPUs> main.py --config <path of config file> --name <name of log/ckpt> <--task1 --task2 ...> <--test_task1 --test_task2 ...> [--gpus <number of gpus (default is 1)>] --load <ckpt path> [--other options]
-eg: python3 -m torch.distributed.launch --nproc_per_node=2 main.py --config config/libri/conformer_256_AdamW.yaml --name test_five_task_with_per-layer-pcgrad --asr --se --sc --tts --vcb --test_asr --test_se --test_sc --test_tts --test_vcb --gpus 2 --no_amp --load best_five_task.pth 
+python -m torch.distributed.launch --nproc_per_node=<num pf GPUs> main.py --config <path of config file> --name <name of log/ckpt> <--task1 --task2 ...> <--test_task1 --test_task2 ...> [--gpus <number of gpus (default is 1)>] --load <ckpt path> [--other options]
+eg: python -m torch.distributed.launch --nproc_per_node=2 main.py --config config/libri/conformer_256_AdamW.yaml --name test_five_task_with_per-layer-pcgrad --asr --se --sc --tts --vcb --test_asr --test_se --test_sc --test_tts --test_vcb --gpus 2 --no_amp --load best_five_task.pth 
 ```
 
 ### Options:

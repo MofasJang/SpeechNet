@@ -37,7 +37,7 @@ class BaseSolver():
             #self.scaler = amp.GradScaler()
 
         # Name experiment
-        self.exp_name = paras.name + '_' + datetime.now().strftime("%Y-%m-%d-%H:%M:%S")
+        self.exp_name = paras.name + '_' + datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
         print('NAME: ', self.exp_name)
         if self.exp_name is None:
             # By default, exp is named after config file

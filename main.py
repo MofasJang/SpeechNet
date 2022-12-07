@@ -165,7 +165,7 @@ def solve(config, paras, mode):
     rank = paras.local_rank
     print(f'Running DDP on rank {rank}.')
     dist.init_process_group(
-        backend='nccl',
+        backend='gloo',
         init_method='env://',
         #world_size=paras.world_size,
         #rank=rank

@@ -15,7 +15,7 @@ from torch.utils.data import DataLoader
 from torch.utils.data.distributed import DistributedSampler
 from torch.nn.utils.rnn import pad_sequence
 
-from src.module import VGGExtractor, CNNExtractor, CNNUpsampler, LinearUpsampler, PseudoUpsampler, RNNLayer
+from src.module import VGGExtractor, CNNExtractor,PseudoDownsampler,CNNUpsampler, LinearUpsampler, PseudoUpsampler, RNNLayer
 
 from bin.tts.dataset import *
 from src.audio import *
@@ -26,7 +26,6 @@ from bin.tts.model import SpeakerIntegrator, VarianceAdaptor
 
 from src.transformer.nets_utils import make_non_pad_mask
 
-import wandb
 
 
 import matplotlib

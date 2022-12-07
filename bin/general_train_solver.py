@@ -22,7 +22,6 @@ from src.transformer.label_smoothing_loss import LabelSmoothingLoss
 import torch.distributed as dist
 from apex.parallel import DistributedDataParallel as DDP
 
-import IPython
 import pdb
 
 import torch.cuda.nvtx as nvtx
@@ -30,7 +29,6 @@ import torch.cuda.nvtx as nvtx
 
 
 
-import wandb
 
 class GeneralSolver(BaseSolver):
     ''' General Solver for training'''
