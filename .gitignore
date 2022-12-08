@@ -1,4 +1,6 @@
 result/*
+raw_data
+preprocessed_data
 log/*
 ckpt/*
 data/*

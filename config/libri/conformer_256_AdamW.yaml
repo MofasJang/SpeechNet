@@ -86,7 +86,7 @@ data:
   tts_corpus:
     seed: 40666888
     dataset: "LibriTTS"
-    preprocessed_path: "F:/dataset/LibriSpeech/LibriTTS"
+    preprocessed_path: "./preprocessed_data/LibriTTS"
     n_mel_channels: 80
     n_bins: 256
     spk_embed_dim: 256
