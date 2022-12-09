@@ -244,16 +244,16 @@ class Preprocessor:
             energy = energy[: len(duration)]
 
         # Save files
-        dur_filename = "{}-ali-{}.npy".format(speaker, basename)
+        dur_filename = "{}-ali-{}.npy".format(self.dataset, basename)
         np.save(os.path.join(self.out_dir, "alignment", dur_filename), duration)
 
-        pitch_filename = "{}-f0-{}.npy".format(speaker, basename)
+        pitch_filename = "{}-f0-{}.npy".format(self.dataset, basename)
         np.save(os.path.join(self.out_dir, "f0", pitch_filename), pitch)
 
-        energy_filename = "{}-energy-{}.npy".format(speaker, basename)
+        energy_filename = "{}-energy-{}.npy".format(self.dataset, basename)
         np.save(os.path.join(self.out_dir, "energy", energy_filename), energy)
 
-        mel_filename = "{}-mel-{}.npy".format(speaker, basename)
+        mel_filename = "{}-mel-{}.npy".format(self.dataset, basename)
         np.save(
             os.path.join(self.out_dir, "mel", mel_filename),
             mel_spectrogram.T,
