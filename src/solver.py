@@ -10,7 +10,7 @@ from torch.utils.tensorboard import SummaryWriter
 from src.option import default_hparas
 from src.util import human_format, Timer
 
-from apex import amp
+
 #from torch.cuda import amp
 
 
@@ -258,6 +258,7 @@ class BaseSolver():
 
     def enable_apex(self):
         if not self.no_amp:
+            from apex import amp
             # Enable mixed precision computation (ToDo: Save/Load amp)
             self.amp_lib = amp
             self.verbose(

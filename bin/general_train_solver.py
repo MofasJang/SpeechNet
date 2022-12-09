@@ -20,7 +20,7 @@ from src.pcgrad import PCGrad
 from src.transformer.label_smoothing_loss import LabelSmoothingLoss
 
 import torch.distributed as dist
-from apex.parallel import DistributedDataParallel as DDP
+
 
 import pdb
 
@@ -222,6 +222,7 @@ class GeneralSolver(BaseSolver):
         # DistributedDataParallel
         if self.paras.gpu and self.mode == 'train':
             if not self.no_amp:
+                from apex.parallel import DistributedDataParallel as DDP
                 self.model = DDP(self.model)
             else:
                 #self.model = nn.SyncBatchNorm.convert_sync_batchnorm(self.model, self.process_group)
@@ -298,7 +299,6 @@ class GeneralSolver(BaseSolver):
                 sc_tr_set_iter = iter(self.solver_sc.train_dataloader)
             if self.vcb_task and not self.not_train_vcb:
                 vcb_tr_set_iter = iter(self.solver_vcb.trainloader)
-
             start_time = time()
             while not asr_data_exhausted or not se_data_exhausted or not tts_data_exhausted \
                 or not sc_data_exhausted or not vcb_data_exhausted:

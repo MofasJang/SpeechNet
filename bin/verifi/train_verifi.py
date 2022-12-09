@@ -53,6 +53,7 @@ class SolverVERIFI(BaseSolver):
         # DistributedDataParallel
         if self.paras.gpu and self.mode == 'train':
             if not self.no_amp:
+                from apex.parallel import DistributedDataParallel as DDP
                 self.model = DDP(self.model) 
             else:
                 self.model = nn.parallel.DistributedDataParallel(self.model, device_ids=[self.gpu_rank])         

@@ -14,7 +14,6 @@ from bin.asr.asr_data import load_dataset
 from src.transformer.label_smoothing_loss import LabelSmoothingLoss
 
 import torch.distributed as dist
-from apex.parallel import DistributedDataParallel as DDP
 
 from src.transformer.mask import target_mask
 from src.transformer.nets_utils import make_non_pad_mask
@@ -116,6 +115,7 @@ class SolverASR():
         # DistributedDataParallel
         if self.paras.gpu and self.mode == 'train':
             if not self.no_amp:
+                from apex.parallel import DistributedDataParallel as DDP
                 self.model = DDP(self.model) 
             else:
                 self.model = nn.parallel.DistributedDataParallel(self.model, device_ids=[self.gpu_rank]) 
